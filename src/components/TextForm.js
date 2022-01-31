@@ -49,8 +49,7 @@ function TextForm(props) {
     }
 
     const count = () => {
-        let arrText = text.split(/[ ]+/);
-        return arrText.length - arrText.filter(x => x==="").length;
+        return text.split(/\s+/).filter(element => {return element.length !== 0}).length;
     }
 
     return (
@@ -60,12 +59,12 @@ function TextForm(props) {
             <div className="mb-3">
                 <textarea className="form-control" id="myBox" style={{color : 'black'}} rows="8" value={text} onChange={handleOnChange} ></textarea>
             </div>
-            <button className="btn btn-primary mx-1" onClick={handleUpClick} >convert to uppercase</button>
-            <button className="btn btn-primary mx-1" onClick={handleLoClick} >convert to lowercase</button>
-            <button className="btn btn-primary mx-1" onClick={handleClearClick} >clear text</button>
-            <button className="btn btn-primary mx-1" onClick={handleCopyText} >copy text</button>
-            <button className="btn btn-primary mx-1" onClick={handlePasteText} >paste text</button>
-            <button className="btn btn-primary mx-1" onClick={handleExtraSpaces} >Remove Extra Spaces</button>
+            <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleUpClick} >convert to uppercase</button>
+            <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleLoClick} >convert to lowercase</button>
+            <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleClearClick} >clear text</button>
+            <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleCopyText} >copy text</button>
+            <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handlePasteText} >paste text</button>
+            <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleExtraSpaces} >Remove Extra Spaces</button>
 
         </div>
         <div className="container my-3" style={{color : props.mode==='light'? 'black':'white'}}>
@@ -73,7 +72,7 @@ function TextForm(props) {
             <p>{count()} words and {text.length} characters</p>
             <p>{0.008 * text.split(" ").length} minutes to read</p>
             <h2>Preview</h2>
-            <p>{text.length > 0 ? text: 'Enter your text to preview it here'} </p>
+            <p>{text.length > 0 ? text: 'Nothing to preview'} </p>
         </div>
         </>
     );

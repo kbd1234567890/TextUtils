@@ -6,12 +6,12 @@ import Alert from './components/Alert';
 import Navbar from './components/Navbar';
 import {TextForm} from './components/TextForm';
 import k, {a} from './module1';
-// import {
-//   BrowserRouter as Router,
-//   Routes,
-//   Route,
-//   Link
-// } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
 
 function App() {
 
@@ -35,31 +35,33 @@ function App() {
       setMode('light');
       document.body.style.backgroundColor = '#FFFFFF';
       showAlert('light mode has been enabled', 'success');
-      document.title = 'TextUtils - light mode';
+      // document.title = 'TextUtils - light mode';
     }
     else{
       setMode(localMode);
       document.body.style.backgroundColor = localMode;
       showAlert(localMode + ' has been enabled', 'success');
-      document.title = 'TextUtils - dark mode';
+      // document.title = 'TextUtils - dark mode';
     }
   }
   return (
-  //  <Router>
-  <>
+   <Router>
+  
     <Navbar title= {a} mode={mode} toggleMode = {toggleMode} />
     <Alert alert={alert}/>
     <div className="container my-3">
-    {/* <Routes> */}
-          {/* <Route exact path="/about" element={<About />}> */}
-          {/* </Route> */}
-          {/* <Route exact path="/" element={<TextForm heading='Enter text to analyze' mode= {mode} showAlert = {showAlert} />} > */}
-          <TextForm heading='Enter text to analyze' mode= {mode} showAlert = {showAlert} />
-          {/* </Route> */}
-        {/* </Routes> */}
+    <Routes>
+          <Route exact path="/about" element={<About />}>
+          </Route>
+          <Route exact path="/" element={<TextForm heading='Enter text to analyze' mode= {mode} showAlert = {showAlert} />} >
+          {/* <TextForm heading='Enter text to analyze' mode= {mode} showAlert = {showAlert} /> */}
+          </Route>
+          <Route exact path="/about" element={<About/>}>
+          </Route>
+    </Routes>
     </div>
-    {/* </Router> */}
-    </>
+    </Router>
+  
   );
 }
 
