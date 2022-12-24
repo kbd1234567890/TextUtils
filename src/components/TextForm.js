@@ -63,7 +63,7 @@ function TextForm(props) {
             <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleLoClick} >convert to lowercase</button>
             <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleClearClick} >clear text</button>
             <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleCopyText} >copy text</button>
-            <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handlePasteText} >paste text</button>
+            <button className="btn btn-primary mx-1 my-1" onClick={handlePasteText} >paste text</button>
             <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleExtraSpaces} >Remove Extra Spaces</button>
 
         </div>
